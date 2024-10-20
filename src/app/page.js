@@ -1,4 +1,5 @@
-import Image from "next/image";
+import HeroForm from "@/components/forms/HeroForm";
+
 
 
 export default function Home() {
@@ -15,13 +16,7 @@ export default function Home() {
           </h2>
         </div>
 
-        <form className="inline-flex items-center shadow">
-          <span className="bg-white py-4 pl-4">linklist.to/</span>
-          <input type="text" className="py-4 outline-none" placeholder="username" />
-          <button type="submit" className="bg-blue-500 text-white p-4 px-6">
-            Join for free
-          </button>
-        </form>
+        <HeroForm />
 
       </section>
     </main>
