@@ -5,14 +5,27 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import { signOut } from "next-auth/react"
 
-export default function LogoutButton() {
+export default function LogoutButton({
+    classname = 'flex items-center gap-2 border p-2 px-4 shadow',
+    iconLeft = false,
+    iconClasses = ''
+}) {
     return (
         <button
-            className="flex items-center gap-2 border p-2 px-4 shadow"
+            className={classname}
             onClick={() => signOut()}
         >
+
+            {iconLeft && (
+                <FontAwesomeIcon icon={faRightFromBracket} className={iconClasses} />
+
+            )}
             <span>Logout</span>
-            <FontAwesomeIcon icon={faRightFromBracket} />
+
+            {!iconLeft && (
+                <FontAwesomeIcon icon={faRightFromBracket} />
+
+            )}
 
         </button>
     )

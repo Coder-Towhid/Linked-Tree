@@ -1,11 +1,14 @@
 "use client"
 
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import { useRouter } from "next/router";
 
 import { useEffect, useState } from "react";
 
-export default function HeroForm() {
+export default function HeroForm({ user }) {
+
+
 
 
     useEffect(() => {
@@ -24,8 +27,14 @@ export default function HeroForm() {
     async function handleSubmit(ev) {
         ev.preventDefault();
         if (username.length > 0) {
-            window.localStorage.setItem('desiredUsername', username)
-            await signIn('google');
+
+            if (user) {
+                redirect('/account?desiredUsername' + username)
+            } else {
+                window.localStorage.setItem('desiredUsername', username)
+                await signIn('google');
+            }
+
         }
     }
 
