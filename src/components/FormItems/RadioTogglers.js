@@ -1,25 +1,22 @@
-import { faImage, faPalette, faPallet } from "@fortawesome/free-solid-svg-icons";
+import { faImage, faPalette } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-export default function RadioTogglers({ options, selected, onChange }) {
+export default function RadioTogglers({ options, onChange }) {
     return (
+
+
         <div className="radio-togglers shadow ">
-            <label className="">
-                <input type="radio" name="bg-type" value="color"></input>
-                <div >
-                    <FontAwesomeIcon icon={faPalette} />
-                    <span>Color</span>
+            {options.map(option => (
+                <label className="">
+                    <input type="radio" name="bg-type" value={option.color}></input>
+                    <div >
+                        <FontAwesomeIcon icon={option.icon} />
+                        <span>{option.label}</span>
 
-                </div>
-            </label>
-            <label>
-                <input type="radio" name="bg-type" value='image'></input>
-                <div>
-                    <FontAwesomeIcon icon={faImage} />
-                    <span>Image</span>
+                    </div>
+                </label>
+            ))}
 
 
-                </div>
-            </label>
         </div>
     )
 }
